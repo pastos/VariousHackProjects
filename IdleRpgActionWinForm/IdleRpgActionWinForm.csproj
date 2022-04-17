@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Buttons\ActionButtonWithOneChoice.cs" />
+    <Compile Remove="Buttons\ActionButtonWithOneChoice.Designer.cs" />
+    <Compile Remove="Buttons\ActionButtonWithOneChoiceAndActor.cs" />
+    <Compile Remove="Buttons\ActionButtonWithOneChoiceAndActor.Designer.cs" />
+    <Compile Remove="Buttons\ActionButtonWithTwoChoices.cs" />
+    <Compile Remove="Buttons\ActionButtonWithTwoChoices.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Buttons\ActionButtonWithOneChoice.resx" />
+    <EmbeddedResource Remove="Buttons\ActionButtonWithOneChoiceAndActor.resx" />
+    <EmbeddedResource Remove="Buttons\ActionButtonWithTwoChoices.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GlobalHook\Gma.UserActivityMonitor\InputActivityMonitor.csproj" />
+    <ProjectReference Include="..\IdleRpgAction.Base\IdleRpgAction.Domain.csproj" />
+    <ProjectReference Include="..\IdleRpgAction.Commands\IdleRpgAction.Application.csproj" />
+    <ProjectReference Include="..\KeyboardInputEvent\KeyboardInputEvent.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="RandomTexts.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
