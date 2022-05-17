@@ -7,16 +7,21 @@ namespace IdleRpgAction.Application.GameCommands
     ///////////////////////////////////    
 
     ////////////Adventuring
-    public class StatusCommand :  //: ICommand
+    public class StatusCommand : Implementations.IdleRpgActionBase  //: ICommand
     {
-        public TimeSpan Cooldown { get; set; }
-        public ActionCommandEnum ActionCommand { get; private set; }
-        public string RandomText { get; set; }
-
         public StatusCommand()
         {
             ActionCommand = ActionCommandEnum.Status;
             Cooldown = new TimeSpan(0, 0, 5);
         }
+
+        
+
+        //public override string Build()
+        //{
+        //    SetActionCommand(ActionCommand);
+        //    SetRandomText();
+        //    return base.Build();
+        //}
     }
 }

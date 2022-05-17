@@ -27,7 +27,9 @@
     "25": "lunch money from kids",
     "26": "and burn it",
     "27": "dirty clothes",
-    "28": "from paypal"
+    "28": "from paypal",
+    "29": "a random government",
+    "30": "smores"
   },
   "Pray": {
     "1": "for a better tomorrow",
@@ -57,18 +59,34 @@
     "4": "but don't actually vote'",
     "5": "share subscribe like",
     "6": "for democracy",
-    "7": "for forcing democracy upon others"
+    "7": "for forcing democracy upon others",
+    "8": "for injustice",
+    "9": "for Ukraine in Eurovision"
   },
   "Daily": {
     "1": "routine",
     "2": "swearing",
     "3": "quest",
-    "4": "life of Brian"
+    "4": "life of Brian",
+    "5": "rant",
+    "6": "stretching"
   },
   "Favor": {
     "1": "me all mighty",
     "2": "savior",
     "3": "for shall I follow thou path",
-    "4": "your pilgrim"
+    "4": "your pilgrim",
+    "5": "the rich",
+    "6": "the strong"
+  },
+  "Cooldowns": {
+    "1": "are the best thing",
+    "2": "are for balance",
+    "3": "for preventing keyboard smashing"
+  },
+  "Inventory": {
+    "1": "of some RPG flop",
+    "2": "software",
+    "3": "is missing"
   }
 }

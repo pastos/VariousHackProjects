@@ -19,14 +19,17 @@ namespace InputActivityMonitor
         [DllImport("user32.dll")]
         private static extern bool GetWindowRect(IntPtr hWnd, out Rectangle rect);
 
+        public static bool IsWindowAtFront { get; private set; }
         public static void BringWindowToFront(string windowName)
         {
+            IsWindowAtFront = false;
             IntPtr hWnd = FindName(windowName);
             //IntPtr some = GetForegroundWindow();
             //IntPtr hWnd = FindWindow(null, windowName);
             if (hWnd != IntPtr.Zero)
             {
                 SetForegroundWindow(hWnd);
+                IsWindowAtFront = true;
             }
         }
 

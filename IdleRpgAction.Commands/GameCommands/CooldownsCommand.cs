@@ -1,19 +1,13 @@
 ﻿using IdleRpgAction.Domain.Enumerations;
-using IdleRpgAction.Domain.Interfaces;
 using System;
 
 namespace IdleRpgAction.Application.GameCommands
 {
-    public class CooldownsCommand : ICommand
+    public class CooldownsCommand : Implementations.IdleRpgActionBase
     {
-        public TimeSpan Cooldown { get; set; }
-        public ActionCommandEnum ActionCommand { get; private set; }
-        public string RandomText { get; set; }
-        public int Level { get; set; }
-
         public CooldownsCommand()
         {
-            ActionCommand = ActionCommandEnum.Adventure;
+            ActionCommand = ActionCommandEnum.Cooldowns;
             Cooldown = new TimeSpan(0, 0, 5);
         }
     }
