@@ -1,15 +1,10 @@
 ﻿using IdleRpgAction.Domain.Enumerations;
-using IdleRpgAction.Domain.Interfaces;
 using System;
 
 namespace IdleRpgAction.Application.GameCommands
 {
-    public class StealCommand : ICommand
+    public class StealCommand : Implementations.IdleRpgActionBase
     {
-        public TimeSpan Cooldown { get; set; }
-        public ActionCommandEnum ActionCommand { get; private set; }
-        public string RandomText { get; set; }
-
         public StealCommand()
         {
             ActionCommand = ActionCommandEnum.Steal;

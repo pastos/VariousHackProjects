@@ -1,59 +1,29 @@
-﻿using IdleRpgAction.Base.Enumerations;
-using IdleRpgAction.Base.Interfaces;
-using IdleRpgAction.Domain.Interfaces;
+﻿using IdleRpgAction.Domain.Enumerations;
 using System;
 using System.Windows.Forms;
 
 namespace IdleRpgActionWinForm.Buttons
 {
-
-    public abstract class ActionButtonUserControl : UserControl
-    {
-        protected ActionCommandEnum _actionEnum;
-        protected IIdleRpgAction _idleRpgAction;
-        protected ActionButtonUserControl(ActionCommandEnum actionEnum)
-        {
-            //_idleRpgAction = new ActionBase();
-            _actionEnum = actionEnum;
-        }
-        protected void SetButtonText(Button btn)
-        {
-            btn.Text = _actionEnum.ToString();
-        }
-    }
-
-
-
-    public partial class ActionButtonWithOneChoice : ActionButtonUserControl
+    public partial class ActionButtonWithOneChoice : UserControl
     {
         private bool _isRunning;
-        public IIdleRpgAction IdleRpgAction;
-
-        public void ActionButtonWithOneChoic(Action<ICommand> commandMethod)
-        {
-            
-        }
-
-        private void assa(StatusCommand command)
-        {
-            command.RandomText = "";
-            command.Build();
-        }
-
-        public ActionButtonWithOneChoice(IIdleRpgAction idleRpgAction, ActionCommandEnum actionEnum) : base(idleRpgAction, actionEnum)
+        private string _targetApplicationName;
+        IdleRpgAction.Application.Implementations.IdleRpgActionBase _actionCommand;
+        public ActionButtonWithOneChoice(IdleRpgAction.Application.Implementations.IdleRpgActionBase command)
         {
             InitializeComponent();
-            SetButtonText(btnAction);
-            ActionButtonWithOneChoic(assa);
+            _actionCommand = command;
+            SetButtonText(command.ActionCommand);
         }
 
-
-        private string ActionCommand(int amount)
+        public void UpdateTargetApplication(string targetApplicationName)
         {
-            string comm = IdleRpgAction.SetActionCommand(_actionEnum)
-                                           .SetAmount(amount)
-                                           .Build();
-            return comm;
+            _targetApplicationName = targetApplicationName;
+        }
+
+        private void SetButtonText(ActionCommandEnum actionEnum)
+        {
+            btnAction.Text = actionEnum.ToString();
         }
 
         private void btnAction_Click(object sender, EventArgs e)
@@ -61,10 +31,16 @@ namespace IdleRpgActionWinForm.Buttons
             if (!_isRunning)
             {
                 _isRunning = !_isRunning;
-                string comm = ActionCommand((int)txtAmount.Value);
+                string comm = _actionCommand.SetActionCommand()
+                                            .SetAmount((int)txtAmount.Value)
+                                            .Build();
 
-                InputActivityMonitor.ExternalWindowHelper.BringWindowToFront("Discord");
-                KeyboardInputEvent.CaligraphyHelper.TextToKeystrokes(comm);
+                //InputActivityMonitor.ExternalWindowHelper.BringWindowToFront("Discord");
+                InputActivityMonitor.ExternalWindowHelper.BringWindowToFront(_targetApplicationName);
+                if (InputActivityMonitor.ExternalWindowHelper.IsWindowAtFront)
+                {
+                    KeyboardInputEvent.CaligraphyHelper.TextToKeystrokes(comm);
+                }
             }
             _isRunning = !_isRunning;
         }

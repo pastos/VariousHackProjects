@@ -1,5 +1,4 @@
-﻿using IdleRpgAction.Base.Enumerations;
-using IdleRpgAction.Base.Interfaces;
+﻿using IdleRpgAction.Domain.Enumerations;
 using System;
 using System.Windows.Forms;
 
@@ -8,13 +7,18 @@ namespace IdleRpgActionWinForm.Buttons
     public partial class ActionButtonWithTwoChoices : UserControl
     {
         private bool _isRunning;
-        public IIdleRpgAction IdleRpgAction;
-        public ActionCommandEnum _commandEnum { get; set; }
-        public ActionButtonWithTwoChoices(ActionCommandEnum actionEnum)
+        private string _targetApplicationName;
+        IdleRpgAction.Application.Implementations.IdleRpgActionBase _actionCommand;
+        public ActionButtonWithTwoChoices(IdleRpgAction.Application.Implementations.IdleRpgActionBase command)
         {
             InitializeComponent();
-            _commandEnum = actionEnum;
-            SetButtonText(actionEnum);
+            _actionCommand = command;
+            SetButtonText(command.ActionCommand);
+        }
+
+        public void UpdateTargetApplication(string targetApplicationName)
+        {
+            _targetApplicationName = targetApplicationName;
         }
 
         private void SetButtonText(ActionCommandEnum actionEnum)
@@ -27,13 +31,16 @@ namespace IdleRpgActionWinForm.Buttons
             if (!_isRunning)
             {
                 _isRunning = !_isRunning;
-                string comm = IdleRpgAction.SetActionCommand(_commandEnum)
-                                           .SetFirstItem((int)txtItemId1.Value)
-                                           .SetSecondItem((int)txtItemId2.Value)
-                                           .Build();
+                string comm = _actionCommand.SetActionCommand()
+                                            .SetFirstItem((int)txtItemId1.Value)
+                                            .SetSecondItem((int)txtItemId2.Value)
+                                            .Build();
 
-                InputActivityMonitor.ExternalWindowHelper.BringWindowToFront("Discord");
-                KeyboardInputEvent.CaligraphyHelper.TextToKeystrokes(comm);
+                InputActivityMonitor.ExternalWindowHelper.BringWindowToFront(_targetApplicationName);
+                if (InputActivityMonitor.ExternalWindowHelper.IsWindowAtFront)
+                {
+                    KeyboardInputEvent.CaligraphyHelper.TextToKeystrokes(comm);
+                }
             }
             _isRunning = !_isRunning;
         }

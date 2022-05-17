@@ -1,16 +1,10 @@
 ﻿using IdleRpgAction.Domain.Enumerations;
-using IdleRpgAction.Domain.Interfaces;
 using System;
 
 namespace IdleRpgAction.Application.GameCommands
 {
-    public class TournamentCommand : ICommand
+    public class TournamentCommand : Implementations.IdleRpgActionBase
     {
-        public TimeSpan Cooldown { get; set; }
-        public ActionCommandEnum ActionCommand { get; private set; }
-        public string RandomText { get; set; }
-        public int Amount { get; set; }
-
         public TournamentCommand()
         {
             ActionCommand = ActionCommandEnum.Tournament;
