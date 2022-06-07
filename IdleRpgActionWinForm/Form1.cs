@@ -1,4 +1,5 @@
 ﻿using IdleRpgAction.Application.GameCommands;
+using IdleRpgAction.Domain.Enumerations;
 using IdleRpgActionWinForm.Buttons;
 using System.Windows.Forms;
 
@@ -61,14 +62,23 @@ namespace IdleRpgActionWinForm
             var action1 = new ActionButtonWithOneChoice(new AdventureCommand());
             var action2 = new ActionButton(new CooldownsCommand());
             var action3 = new ActionButton(new ActiveAdventureCommand());
+            var action4 = new ActionButtonWithDropdownChoice(new PurchaseBonusCommand(), EnumerationChoserEnum.BonusChoicesEnum);
+            var action5 = new ActionButtonWithDropdownChoice(new ActivateBonusCommand(), EnumerationChoserEnum.BonusChoicesEnum);
+            var action6 = new ActionButton(new BoostersCommand());
 
             UpdateTargetAppEvent += action1.UpdateTargetApplication;
             UpdateTargetAppEvent += action2.UpdateTargetApplication;
             UpdateTargetAppEvent += action3.UpdateTargetApplication;
+            UpdateTargetAppEvent += action4.UpdateTargetApplication;
+            UpdateTargetAppEvent += action5.UpdateTargetApplication;
+            UpdateTargetAppEvent += action6.UpdateTargetApplication;
 
             flowLayoutAdventure.Controls.Add(action1);
             flowLayoutAdventure.Controls.Add(action2);
             flowLayoutAdventure.Controls.Add(action3);
+            flowLayoutAdventure.Controls.Add(action4);
+            flowLayoutAdventure.Controls.Add(action5);
+            flowLayoutAdventure.Controls.Add(action6);
         }
 
         private void PopulateTabDailyQuest()
