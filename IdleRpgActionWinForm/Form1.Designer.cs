@@ -229,7 +229,7 @@ namespace IdleRpgActionWinForm
             this.txtApplicationName.Name = "txtApplicationName";
             this.txtApplicationName.Size = new System.Drawing.Size(191, 23);
             this.txtApplicationName.TabIndex = 1;
-            this.txtApplicationName.Text = "Notepad++";
+            this.txtApplicationName.Text = "Discord";
             this.txtApplicationName.TextChanged += new System.EventHandler(this.txtApplicationName_TextChanged);
             // 
             // label1
