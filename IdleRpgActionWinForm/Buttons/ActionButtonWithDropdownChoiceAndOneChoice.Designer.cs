@@ -1,7 +1,7 @@
 ﻿
 namespace IdleRpgActionWinForm.Buttons
 {
-    partial class ActionButtonWithDropdownChoice
+    partial class ActionButtonWithDropdownChoiceAndOneChoice
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,6 +31,8 @@ namespace IdleRpgActionWinForm.Buttons
         {
             this.btnAction = new System.Windows.Forms.Button();
             this.ddl = new System.Windows.Forms.ComboBox();
+            this.txtNumber = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAction
@@ -48,19 +50,33 @@ namespace IdleRpgActionWinForm.Buttons
             // 
             this.ddl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddl.FormattingEnabled = true;
-            this.ddl.Location = new System.Drawing.Point(83, 21);
+            this.ddl.Location = new System.Drawing.Point(83, 3);
             this.ddl.Name = "ddl";
             this.ddl.Size = new System.Drawing.Size(92, 23);
             this.ddl.TabIndex = 5;
             // 
-            // ActionButtonWithDropdownChoice
+            // txtNumber
+            // 
+            this.txtNumber.Location = new System.Drawing.Point(83, 32);
+            this.txtNumber.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.txtNumber.Name = "txtNumber";
+            this.txtNumber.Size = new System.Drawing.Size(92, 23);
+            this.txtNumber.TabIndex = 6;
+            // 
+            // ActionButtonWithDropdownChoiceAndOneChoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtNumber);
             this.Controls.Add(this.ddl);
             this.Controls.Add(this.btnAction);
-            this.Name = "ActionButtonWithDropdownChoice";
+            this.Name = "ActionButtonWithDropdownChoiceAndOneChoice";
             this.Size = new System.Drawing.Size(178, 63);
+            ((System.ComponentModel.ISupportInitialize)(this.txtNumber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -68,5 +84,6 @@ namespace IdleRpgActionWinForm.Buttons
         #endregion
         private System.Windows.Forms.Button btnAction;
         private System.Windows.Forms.ComboBox ddl;
+        private System.Windows.Forms.NumericUpDown txtNumber;
     }
 }
