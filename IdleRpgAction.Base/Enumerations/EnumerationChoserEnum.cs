@@ -5,6 +5,7 @@
         ActionCommandEnum,
         CoinSideEnum,
         RouletteGameEnum,
-        BonusChoicesEnum
+        BonusChoicesEnum,
+        CratesRarityEnum
     }
 }

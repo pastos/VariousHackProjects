@@ -20,6 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Buttons\ActionButtonWithOneChoiceAndDropdownChoiceAndOneChoice .cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Buttons\ActionButtonWithDropdownChoiceAndOneChoice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Buttons\ActionButtonWithDropdownChoice.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29509.3
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpiresAndPuzzles", "EmpiresAndPuzzles\EmpiresAndPuzzles.csproj", "{A5BFC181-F827-480F-82B3-6D555A3094D9}"
 EndProject
@@ -28,8 +28,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoCaptureLibrary", "PhotoCaptureLibrary\PhotoCaptureLibrary.csproj", "{AC764E39-D909-4B18-A9EB-934B61B7D3D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfilleSW", "ProfilleSW\ProfilleSW.csproj", "{D40757CD-F904-4732-A75E-008052F781CD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronFx", "IronFx\IronFx.csproj", "{D53BCB09-C6D9-4136-BCFB-447E46C4E281}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gArticCheatSheet", "gArticCheatSheet\gArticCheatSheet.csproj", "{A7884E90-3B0A-490D-9BA1-66592B06347C}"
 EndProject
@@ -103,10 +101,6 @@ Global
 		{D40757CD-F904-4732-A75E-008052F781CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D40757CD-F904-4732-A75E-008052F781CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D40757CD-F904-4732-A75E-008052F781CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D53BCB09-C6D9-4136-BCFB-447E46C4E281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D53BCB09-C6D9-4136-BCFB-447E46C4E281}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D53BCB09-C6D9-4136-BCFB-447E46C4E281}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D53BCB09-C6D9-4136-BCFB-447E46C4E281}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A7884E90-3B0A-490D-9BA1-66592B06347C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7884E90-3B0A-490D-9BA1-66592B06347C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7884E90-3B0A-490D-9BA1-66592B06347C}.Release|Any CPU.ActiveCfg = Release|Any CPU

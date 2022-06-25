@@ -4,12 +4,12 @@ using System.Windows.Forms;
 
 namespace IdleRpgActionWinForm.Buttons
 {
-    public partial class ActionButtonWithDropdownChoice : UserControl
+    public partial class ActionButtonWithOneChoiceAndDropdownChoiceAndOneChoice : UserControl
     {
         private bool _isRunning;
         private string _targetApplicationName;
         IdleRpgAction.Application.Implementations.IdleRpgActionBase _actionCommand;
-        public ActionButtonWithDropdownChoice(IdleRpgAction.Application.Implementations.IdleRpgActionBase command, EnumerationChoserEnum enumChoser)
+        public ActionButtonWithOneChoiceAndDropdownChoiceAndOneChoice(IdleRpgAction.Application.Implementations.IdleRpgActionBase command, EnumerationChoserEnum enumChoser)
         {
             InitializeComponent();
             _actionCommand = command;
@@ -44,6 +44,9 @@ namespace IdleRpgActionWinForm.Buttons
                 case EnumerationChoserEnum.BonusChoicesEnum:
                     enumItems = Enum.GetNames<BonusChoicesEnum>();
                     break;
+                case EnumerationChoserEnum.CratesRarityEnum:
+                    enumItems = Enum.GetNames<CratesRarityEnum>();
+                    break;
                 default:
                     break;
             }
@@ -65,7 +68,9 @@ namespace IdleRpgActionWinForm.Buttons
             {
                 _isRunning = !_isRunning;
                 string comm = _actionCommand.SetActionCommand()
+                                            .SetAmount((int)txtBet.Value)
                                             .SetParameter(ddl.SelectedItem.ToString())
+                                            .SetAmount((int)txtNumber.Value)
                                             .Build();
 
                 //InputActivityMonitor.ExternalWindowHelper.BringWindowToFront("Discord");

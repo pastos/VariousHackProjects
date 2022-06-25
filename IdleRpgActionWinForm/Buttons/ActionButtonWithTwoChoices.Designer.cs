@@ -57,6 +57,7 @@ namespace IdleRpgActionWinForm.Buttons
             this.btnAction.TabIndex = 3;
             this.btnAction.Text = "Status";
             this.btnAction.UseVisualStyleBackColor = true;
+            this.btnAction.Click += new System.EventHandler(this.btnAction_Click);
             // 
             // txtItemId2
             // 

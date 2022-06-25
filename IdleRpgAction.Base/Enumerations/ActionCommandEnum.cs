@@ -50,6 +50,8 @@ namespace IdleRpgAction.Domain.Enumerations
         Inventory,
         [Description("$crates")]
         Crates,
+        [Description("$open")]
+        Open,
         [Description("$sell")]
         Sell,
         [Description("$merchant")]
