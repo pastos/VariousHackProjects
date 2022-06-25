@@ -125,17 +125,20 @@ namespace IdleRpgActionWinForm
             var action1 = new ActionButton(new InventoryCommand());
             var action2 = new ActionButtonWithTwoChoices(new MergeCommand());
             var action3 = new ActionButtonWithOneChoice(new UpgradeCommand());
-            var action4 = new ActionButtonWithOneChoice(new CratesCommand());
+            var action4 = new ActionButton(new CratesCommand());
+            var action5 = new ActionButtonWithDropdownChoiceAndOneChoice(new OpenCratesCommand(), EnumerationChoserEnum.CratesRarityEnum);
 
             UpdateTargetAppEvent += action1.UpdateTargetApplication;
             UpdateTargetAppEvent += action2.UpdateTargetApplication;
             UpdateTargetAppEvent += action3.UpdateTargetApplication;
             UpdateTargetAppEvent += action4.UpdateTargetApplication;
+            UpdateTargetAppEvent += action5.UpdateTargetApplication;
 
             flowLayoutInventoring.Controls.Add(action1);
             flowLayoutInventoring.Controls.Add(action2);
             flowLayoutInventoring.Controls.Add(action3);
             flowLayoutInventoring.Controls.Add(action4);
+            flowLayoutInventoring.Controls.Add(action5);
         }
 
         private void PopulateTabShopping()
@@ -157,8 +160,8 @@ namespace IdleRpgActionWinForm
         {
             var action1 = new ActionButtonWithOneChoice(new BlackjackCommand());
             var action2 = new ActionButtonWithOneChoiceAndActor(new CardCommand());
-            var action3 = new ActionButtonWithOneChoice(new FlipCommand());
-            var action4 = new ActionButtonWithTwoChoices(new RouletteCommand());
+            var action3 = new ActionButtonWithDropdownChoiceAndOneChoice(new FlipCommand(), EnumerationChoserEnum.CoinSideEnum);
+            var action4 = new ActionButtonWithOneChoiceAndDropdownChoiceAndOneChoice(new RouletteCommand(), EnumerationChoserEnum.RouletteGameEnum);
             var action5 = new ActionButtonWithOneChoiceAndActor(new BetCommand());
             var action6 = new ActionButtonWithOneChoiceAndActor(new DoubleOrStealCommand());
             var action7 = new ActionButton(new RouletteTableCommand());
