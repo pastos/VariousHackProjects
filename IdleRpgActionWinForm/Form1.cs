@@ -88,18 +88,21 @@ namespace IdleRpgActionWinForm
             var action3 = new ActionButton(new PrayCommand());
             var action4 = new ActionButton(new VoteCommand());
             var action5 = new ActionButton(new StealCommand());
+            var action6 = new ActionButtonWithTwoChoicesAndText(new ReminderCommand());
 
             UpdateTargetAppEvent += action1.UpdateTargetApplication;
             UpdateTargetAppEvent += action2.UpdateTargetApplication;
             UpdateTargetAppEvent += action3.UpdateTargetApplication;
             UpdateTargetAppEvent += action4.UpdateTargetApplication;
             UpdateTargetAppEvent += action5.UpdateTargetApplication;
+            UpdateTargetAppEvent += action6.UpdateTargetApplication;
 
             flowLayoutDailyQuest.Controls.Add(action1);
             flowLayoutDailyQuest.Controls.Add(action2);
             flowLayoutDailyQuest.Controls.Add(action3);
             flowLayoutDailyQuest.Controls.Add(action4);
             flowLayoutDailyQuest.Controls.Add(action5);
+            flowLayoutDailyQuest.Controls.Add(action6);
         }
 
         private void PopulateTabBattles()
