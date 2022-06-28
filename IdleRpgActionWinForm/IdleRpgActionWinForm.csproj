@@ -4,6 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>IdleRpg</RootNamespace>
+    <AssemblyName>IdleRpg</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +29,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Buttons\ActionButtonWithDropdownChoice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Buttons\ActionButtonWithTwoChoicesAndText.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

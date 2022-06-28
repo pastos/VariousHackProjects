@@ -79,6 +79,8 @@ namespace IdleRpgAction.Domain.Enumerations
         [Description("$activate")]
         Activate,
         [Description("$boosters")]
-        Boosters
+        Boosters,
+        [Description("$reminder")]
+        Reminder
     }
 }
