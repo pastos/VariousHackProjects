@@ -95,6 +95,10 @@ namespace IdleRpgAction.Domain.Enumerations
         [Description("$xp")]
         Xp,
         [Description("$evolve")]
-        Evolve
+        Evolve,
+        [Description("$loot")]
+        Loot,
+        [Description("$exchange")]
+        Exchange
     }
 }

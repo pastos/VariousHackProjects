@@ -155,14 +155,17 @@ namespace IdleRpgActionWinForm
             var action1 = new ActionButtonWithOneChoice(new MerchantCommand());
             var action2 = new ActionButtonWithTwoChoices(new SellCommand());
             var action3 = new ActionButtonWithOneChoice(new UpgradeCommand());
+            var action4 = new ActionButtonWithDropdownChoiceAndOneChoice(new ShopCommand(), EnumerationChoserEnum.WeaponEnum);
 
             UpdateTargetAppEvent += action1.UpdateTargetApplication;
             UpdateTargetAppEvent += action2.UpdateTargetApplication;
             UpdateTargetAppEvent += action3.UpdateTargetApplication;
+            UpdateTargetAppEvent += action4.UpdateTargetApplication;
 
             flowLayoutShopping.Controls.Add(action1);
             flowLayoutShopping.Controls.Add(action2);
             flowLayoutShopping.Controls.Add(action3);
+            flowLayoutShopping.Controls.Add(action4);
         }
 
         private void PopulateTabGamble()

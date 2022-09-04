@@ -6,6 +6,7 @@
         CoinSideEnum,
         RouletteGameEnum,
         BonusChoicesEnum,
-        CratesRarityEnum
+        CratesRarityEnum,
+        WeaponEnum
     }
 }

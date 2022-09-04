@@ -47,6 +47,9 @@ namespace IdleRpgActionWinForm.Buttons
                 case EnumerationChoserEnum.CratesRarityEnum:
                     enumItems = Enum.GetNames<CratesRarityEnum>();
                     break;
+				case EnumerationChoserEnum.WeaponEnum:
+				enumItems = Enum.GetNames<WeaponEnum>();
+				break;
                 default:
                     break;
             }
