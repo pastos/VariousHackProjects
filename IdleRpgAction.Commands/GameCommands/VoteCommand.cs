@@ -8,7 +8,7 @@ namespace IdleRpgAction.Application.GameCommands
         public VoteCommand()
         {
             ActionCommand = ActionCommandEnum.Vote;
-            Cooldown = new TimeSpan(0, 0, 5);
+            Cooldown = new TimeSpan(12, 0, 0);
         }
     }
 }

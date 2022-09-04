@@ -32,16 +32,6 @@ namespace IdleRpgActionWinForm
                 .ConfigureServices((context, services) =>
                 {
                     IConfiguration configuration = context.Configuration;
-                    //services.AddIdleRpgActionCommands(configuration);
-
-                    //services.AddIdleRpg(
-                    //    (configurator) =>
-                    //    {
-                    //        configurator.SetActionCommand(Adventuring.Status)
-                    //                       .Build();
-                    //    }
-                    //    );
-
                     services.AddTransient<Form1>();
                 });
         }

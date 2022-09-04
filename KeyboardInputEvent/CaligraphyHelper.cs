@@ -7,9 +7,9 @@ namespace KeyboardInputEvent
     {
         public static void TextToKeystrokes(string text)
         {
-            MarshalClass.KeyDown(VKCodesEnum.VK_LSHIFT);
-            MarshalClass.KeyPress(VKCodesEnum.VK_Key4);
-            MarshalClass.KeyUp(VKCodesEnum.VK_LSHIFT);
+            //MarshalClass.KeyDown(VKCodesEnum.VK_LSHIFT);
+            //MarshalClass.KeyPress(VKCodesEnum.VK_Key4);
+            //MarshalClass.KeyUp(VKCodesEnum.VK_LSHIFT);
             Thread.Sleep(10);
             foreach (char c in text)
             {
@@ -24,6 +24,12 @@ namespace KeyboardInputEvent
             {
                 MarshalClass.KeyDown(VKCodesEnum.VK_LSHIFT);
                 MarshalClass.KeyPress(VKCodesEnum.VK_Key2);
+                MarshalClass.KeyUp(VKCodesEnum.VK_LSHIFT);
+            }
+            else if (c == '#')
+            {
+                MarshalClass.KeyDown(VKCodesEnum.VK_LSHIFT);
+                MarshalClass.KeyPress(VKCodesEnum.VK_Key3);
                 MarshalClass.KeyUp(VKCodesEnum.VK_LSHIFT);
             }
             else if(c=='(')

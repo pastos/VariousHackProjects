@@ -1,5 +1,4 @@
 ﻿using IdleRpgAction.Domain.Enumerations;
-using IdleRpgAction.Domain.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,11 +10,12 @@ namespace IdleRpgAction.Application.Implementations
     public abstract class IdleRpgActionBase //: IIdleRpgAction
     {
         protected StringBuilder _executableCommand = new StringBuilder();
+        protected string TriggerCommand { get; } = "@IdleRPG#8939 "; //keep the whitespace
         protected Dictionary<string, Dictionary<string, string>> _randomTexts;
 
         protected string Name { get; set; }
 
-        protected TimeSpan Cooldown { get; set; }
+        public TimeSpan Cooldown { get; set; }
         public ActionCommandEnum ActionCommand { get; protected set; }
         protected string RandomText { get; set; }
         protected DateTime CooldownEnd { get; private set; }
@@ -35,13 +35,14 @@ namespace IdleRpgAction.Application.Implementations
         }
         public IdleRpgActionBase SetActionCommand()
         {
-            _executableCommand.Append(ActionCommand);
+            _executableCommand.Append(TriggerCommand);
+            _executableCommand.Append(ActionCommand.ToString().Replace("_", " "));
             return this;
         }
 
         public virtual string Build()
         {
-            StringBuilder execCommand = new StringBuilder();
+            StringBuilder execCommand = new StringBuilder();            
             execCommand = execCommand.AppendJoin("", _executableCommand);
             _executableCommand.Clear();
             return execCommand.ToString();

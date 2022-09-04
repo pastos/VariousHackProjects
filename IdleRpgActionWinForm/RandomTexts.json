@@ -69,7 +69,9 @@
     "3": "quest",
     "4": "life of Brian",
     "5": "rant",
-    "6": "stretching"
+    "6": "stretching",
+    "7": "yawn",
+    "8": "slacking"
   },
   "Favor": {
     "1": "me all mighty",
@@ -77,12 +79,15 @@
     "3": "for shall I follow thou path",
     "4": "your pilgrim",
     "5": "the rich",
-    "6": "the strong"
+    "6": "the strong",
+    "7": "flavor"
   },
   "Cooldowns": {
     "1": "are the best thing",
     "2": "are for balance",
     "3": "for preventing keyboard smashing",
-    "4": "after heat wave"
+    "4": "after heat wave",
+    "5": "are wasting my life",
+    "6": "hide the meaning of life"
   }
 }

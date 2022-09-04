@@ -43,6 +43,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdleRpgAction.Domain", "Idl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdleRpgAction.Application", "IdleRpgAction.Commands\IdleRpgAction.Application.csproj", "{39E7C597-8FEA-48A5-862E-3D5D207B48DB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BankOfCyprus", "BankOfCyprus", "{DCB23594-0797-4E95-AE2C-08F4ED162090}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassCodeManager", "PassCodeManager\PassCodeManager.csproj", "{28038734-43D9-4EAA-9E37-615FF02EFD97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +129,10 @@ Global
 		{39E7C597-8FEA-48A5-862E-3D5D207B48DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39E7C597-8FEA-48A5-862E-3D5D207B48DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39E7C597-8FEA-48A5-862E-3D5D207B48DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28038734-43D9-4EAA-9E37-615FF02EFD97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28038734-43D9-4EAA-9E37-615FF02EFD97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28038734-43D9-4EAA-9E37-615FF02EFD97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28038734-43D9-4EAA-9E37-615FF02EFD97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +141,7 @@ Global
 		{CC2E79EA-DAE5-4BCD-9B17-7B14E23CFB28} = {ACEBC3CB-69ED-4E58-AC44-4376086F3082}
 		{5A4E3187-2599-4C07-ABCC-80A317EB83E3} = {ACEBC3CB-69ED-4E58-AC44-4376086F3082}
 		{39E7C597-8FEA-48A5-862E-3D5D207B48DB} = {ACEBC3CB-69ED-4E58-AC44-4376086F3082}
+		{28038734-43D9-4EAA-9E37-615FF02EFD97} = {DCB23594-0797-4E95-AE2C-08F4ED162090}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E2DD587D-A697-4AB6-8A78-AB3F6CE0C091}

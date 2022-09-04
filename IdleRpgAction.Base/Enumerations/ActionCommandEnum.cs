@@ -81,6 +81,20 @@ namespace IdleRpgAction.Domain.Enumerations
         [Description("$boosters")]
         Boosters,
         [Description("$reminder")]
-        Reminder
+        Reminder,
+        [Description("$guild")]
+        Guild,
+        [Description("$guild invest")]
+        Guild_Invest,
+        [Description("$Guild Pay")]
+        Guild_Pay,
+        [Description("$Guild Upgrade")]
+        Guild_Upgrade,
+        [Description("$Guild Adventure")]
+        Guild_Adventure,
+        [Description("$xp")]
+        Xp,
+        [Description("$evolve")]
+        Evolve
     }
 }

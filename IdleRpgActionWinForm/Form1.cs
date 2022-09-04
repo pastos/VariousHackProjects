@@ -34,37 +34,17 @@ namespace IdleRpgActionWinForm
             PopulateTabInventoring();
             PopulateTabShopping();
             PopulateTabGamble();
+            PopulateTabGuild();
         }
 
         private void PopulateTabProfile()
         {
-            var statusAction = new ActionButton(new StatusCommand());
             var action1 = new ActionButton(new ProfileCommand());
             var action2 = new ActionButton(new Profile2Command());
             var action3 = new ActionButton(new MyClassCommand());
             var action4 = new ActionButton(new MoneyCommand());
-
-            UpdateTargetAppEvent += statusAction.UpdateTargetApplication;
-            UpdateTargetAppEvent += action1.UpdateTargetApplication;
-            UpdateTargetAppEvent += action2.UpdateTargetApplication;
-            UpdateTargetAppEvent += action3.UpdateTargetApplication;
-            UpdateTargetAppEvent += action4.UpdateTargetApplication;
-
-            flowLayoutProfile.Controls.Add(statusAction);
-            flowLayoutProfile.Controls.Add(action1);
-            flowLayoutProfile.Controls.Add(action2);
-            flowLayoutProfile.Controls.Add(action3);
-            flowLayoutProfile.Controls.Add(action4);
-        }
-
-        private void PopulateTabAdventure()
-        {
-            var action1 = new ActionButtonWithOneChoice(new AdventureCommand());
-            var action2 = new ActionButton(new CooldownsCommand());
-            var action3 = new ActionButton(new ActiveAdventureCommand());
-            var action4 = new ActionButtonWithDropdownChoice(new PurchaseBonusCommand(), EnumerationChoserEnum.BonusChoicesEnum);
-            var action5 = new ActionButtonWithDropdownChoice(new ActivateBonusCommand(), EnumerationChoserEnum.BonusChoicesEnum);
-            var action6 = new ActionButton(new BoostersCommand());
+            var action5 = new ActionButton(new XpCommand());
+            var action6 = new ActionButton(new EvolveCommand());
 
             UpdateTargetAppEvent += action1.UpdateTargetApplication;
             UpdateTargetAppEvent += action2.UpdateTargetApplication;
@@ -73,22 +53,46 @@ namespace IdleRpgActionWinForm
             UpdateTargetAppEvent += action5.UpdateTargetApplication;
             UpdateTargetAppEvent += action6.UpdateTargetApplication;
 
+            flowLayoutProfile.Controls.Add(action1);
+            flowLayoutProfile.Controls.Add(action2);
+            flowLayoutProfile.Controls.Add(action3);
+            flowLayoutProfile.Controls.Add(action4);
+            flowLayoutProfile.Controls.Add(action5);
+            flowLayoutProfile.Controls.Add(action6);
+        }
+
+        private void PopulateTabAdventure()
+        {
+            var statusAction = new ActionButton(new StatusCommand());
+            var action1 = new ActionButtonWithOneChoice(new AdventureCommand());
+            var action2 = new ActionButton(new ActiveAdventureCommand());
+            var action3 = new ActionButtonWithDropdownChoice(new PurchaseBonusCommand(), EnumerationChoserEnum.BonusChoicesEnum);
+            var action4 = new ActionButtonWithDropdownChoice(new ActivateBonusCommand(), EnumerationChoserEnum.BonusChoicesEnum);
+            var action5 = new ActionButton(new BoostersCommand());
+
+            UpdateTargetAppEvent += statusAction.UpdateTargetApplication;
+            UpdateTargetAppEvent += action1.UpdateTargetApplication;
+            UpdateTargetAppEvent += action3.UpdateTargetApplication;
+            UpdateTargetAppEvent += action4.UpdateTargetApplication;
+            UpdateTargetAppEvent += action5.UpdateTargetApplication;
+
+            flowLayoutAdventure.Controls.Add(statusAction);
             flowLayoutAdventure.Controls.Add(action1);
             flowLayoutAdventure.Controls.Add(action2);
             flowLayoutAdventure.Controls.Add(action3);
             flowLayoutAdventure.Controls.Add(action4);
             flowLayoutAdventure.Controls.Add(action5);
-            flowLayoutAdventure.Controls.Add(action6);
         }
 
         private void PopulateTabDailyQuest()
         {
-            var action1 = new ActionButton(new DailyCommand());
-            var action2 = new ActionButton(new FavorCommand());
-            var action3 = new ActionButton(new PrayCommand());
-            var action4 = new ActionButton(new VoteCommand());
-            var action5 = new ActionButton(new StealCommand());
-            var action6 = new ActionButtonWithTwoChoicesAndText(new ReminderCommand());
+            var action1 = new ActionButton(new CooldownsCommand());
+            var action2 = new ActionButtonWithReminder(new DailyCommand());
+            var action3 = new ActionButton(new FavorCommand());
+            var action4 = new ActionButtonWithReminder(new PrayCommand());
+            var action5 = new ActionButtonWithReminder(new VoteCommand());
+            var action6 = new ActionButtonWithReminder(new StealCommand());
+            var action7 = new ActionButtonWithTwoChoicesAndText(new ReminderCommand());
 
             UpdateTargetAppEvent += action1.UpdateTargetApplication;
             UpdateTargetAppEvent += action2.UpdateTargetApplication;
@@ -96,6 +100,7 @@ namespace IdleRpgActionWinForm
             UpdateTargetAppEvent += action4.UpdateTargetApplication;
             UpdateTargetAppEvent += action5.UpdateTargetApplication;
             UpdateTargetAppEvent += action6.UpdateTargetApplication;
+            UpdateTargetAppEvent += action7.UpdateTargetApplication;
 
             flowLayoutDailyQuest.Controls.Add(action1);
             flowLayoutDailyQuest.Controls.Add(action2);
@@ -103,6 +108,7 @@ namespace IdleRpgActionWinForm
             flowLayoutDailyQuest.Controls.Add(action4);
             flowLayoutDailyQuest.Controls.Add(action5);
             flowLayoutDailyQuest.Controls.Add(action6);
+            flowLayoutDailyQuest.Controls.Add(action7);
         }
 
         private void PopulateTabBattles()
@@ -184,6 +190,28 @@ namespace IdleRpgActionWinForm
             flowLayoutGamble.Controls.Add(action5);
             flowLayoutGamble.Controls.Add(action6);
             flowLayoutGamble.Controls.Add(action7);
+        }
+
+        private void PopulateTabGuild()
+        {
+            var action1 = new ActionButton(new GuildCommand());
+            var action2 = new ActionButtonWithOneChoice(new GuildInvestCommand());
+            var action3 = new ActionButtonWithOneChoiceAndActor(new GuildPayCommand());
+            var action4 = new ActionButton(new GuildUpgradeCommand());
+            var action5 = new ActionButton(new GuildAdventureCommand());
+
+
+            UpdateTargetAppEvent += action1.UpdateTargetApplication;
+            UpdateTargetAppEvent += action2.UpdateTargetApplication;
+            UpdateTargetAppEvent += action3.UpdateTargetApplication;
+            UpdateTargetAppEvent += action4.UpdateTargetApplication;
+            UpdateTargetAppEvent += action5.UpdateTargetApplication;
+
+            flowLayoutGuild.Controls.Add(action1);
+            flowLayoutGuild.Controls.Add(action2);
+            flowLayoutGuild.Controls.Add(action3);
+            flowLayoutGuild.Controls.Add(action4);
+            flowLayoutGuild.Controls.Add(action5);
         }
     }
 }

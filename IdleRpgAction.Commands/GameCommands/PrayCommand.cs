@@ -8,7 +8,7 @@ namespace IdleRpgAction.Application.GameCommands
         public PrayCommand()
         {
             ActionCommand = ActionCommandEnum.Pray;
-            Cooldown = new TimeSpan(0, 0, 5);
+            Cooldown = new TimeSpan(14, 30, 0);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace IdleRpgAction.Application.GameCommands
         public StealCommand()
         {
             ActionCommand = ActionCommandEnum.Steal;
-            Cooldown = new TimeSpan(0, 0, 5);
+            Cooldown = new TimeSpan(1, 0, 0);
         }
     }
 }

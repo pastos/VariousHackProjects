@@ -22,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Buttons\ActionButtonWithReminder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Buttons\ActionButtonWithOneChoiceAndDropdownChoiceAndOneChoice .cs">
       <SubType>UserControl</SubType>
     </Compile>

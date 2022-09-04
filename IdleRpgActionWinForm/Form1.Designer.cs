@@ -46,6 +46,8 @@ namespace IdleRpgActionWinForm
             this.flowLayoutGamble = new System.Windows.Forms.FlowLayoutPanel();
             this.txtApplicationName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.flowLayoutGuild = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -54,6 +56,7 @@ namespace IdleRpgActionWinForm
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -68,6 +71,7 @@ namespace IdleRpgActionWinForm
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Location = new System.Drawing.Point(12, 36);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -241,6 +245,28 @@ namespace IdleRpgActionWinForm
             this.label1.TabIndex = 2;
             this.label1.Text = "Application";
             // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.flowLayoutGuild);
+            this.tabPage8.Location = new System.Drawing.Point(4, 24);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(775, 384);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "Guild";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutGuild
+            // 
+            this.flowLayoutGuild.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutGuild.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutGuild.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutGuild.Name = "flowLayoutGuild";
+            this.flowLayoutGuild.Size = new System.Drawing.Size(775, 384);
+            this.flowLayoutGuild.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -259,6 +285,7 @@ namespace IdleRpgActionWinForm
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,6 +310,8 @@ namespace IdleRpgActionWinForm
         private System.Windows.Forms.FlowLayoutPanel flowLayoutGamble;
         private System.Windows.Forms.TextBox txtApplicationName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutGuild;
     }
 }
 
