@@ -1,13 +1,13 @@
 ﻿using IdleRpgAction.Domain.Enumerations;
+using IdleRpgActionWinForm.Buttons.BaseClass;
 using System;
-using System.Windows.Forms;
 
 namespace IdleRpgActionWinForm.Buttons
 {
-    public partial class ActionButtonWithDropdownChoice : UserControl
+    public partial class ActionButtonWithDropdownChoice : ActionButtonBase
     {
         private bool _isRunning;
-        private string _targetApplicationName;
+        
         IdleRpgAction.Application.Implementations.IdleRpgActionBase _actionCommand;
         public ActionButtonWithDropdownChoice(IdleRpgAction.Application.Implementations.IdleRpgActionBase command, EnumerationChoserEnum enumChoser)
         {
@@ -15,12 +15,7 @@ namespace IdleRpgActionWinForm.Buttons
             _actionCommand = command;
             SetButtonText(command.ActionCommand);
             SetDropdown(enumChoser);
-        }
-
-        public void UpdateTargetApplication(string targetApplicationName)
-        {
-            _targetApplicationName = targetApplicationName;
-        }
+        }     
 
         private void SetButtonText(ActionCommandEnum actionEnum)
         {

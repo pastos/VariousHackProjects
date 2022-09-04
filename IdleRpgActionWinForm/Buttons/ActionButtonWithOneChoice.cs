@@ -1,13 +1,12 @@
 ﻿using IdleRpgAction.Domain.Enumerations;
+using IdleRpgActionWinForm.Buttons.BaseClass;
 using System;
-using System.Windows.Forms;
 
 namespace IdleRpgActionWinForm.Buttons
 {
-    public partial class ActionButtonWithOneChoice : UserControl
+    public partial class ActionButtonWithOneChoice : ActionButtonBase
     {
         private bool _isRunning;
-        private string _targetApplicationName;
         IdleRpgAction.Application.Implementations.IdleRpgActionBase _actionCommand;
         public ActionButtonWithOneChoice(IdleRpgAction.Application.Implementations.IdleRpgActionBase command)
         {
@@ -16,10 +15,6 @@ namespace IdleRpgActionWinForm.Buttons
             SetButtonText(command.ActionCommand);
         }
 
-        public void UpdateTargetApplication(string targetApplicationName)
-        {
-            _targetApplicationName = targetApplicationName;
-        }
 
         private void SetButtonText(ActionCommandEnum actionEnum)
         {

@@ -1,13 +1,12 @@
 ﻿using IdleRpgAction.Domain.Enumerations;
+using IdleRpgActionWinForm.Buttons.BaseClass;
 using System;
-using System.Windows.Forms;
 
 namespace IdleRpgActionWinForm.Buttons
 {
-    public partial class ActionButtonWithDropdownChoiceAndOneChoice : UserControl
+    public partial class ActionButtonWithDropdownChoiceAndOneChoice : ActionButtonBase
     {
         private bool _isRunning;
-        private string _targetApplicationName;
         IdleRpgAction.Application.Implementations.IdleRpgActionBase _actionCommand;
         public ActionButtonWithDropdownChoiceAndOneChoice(IdleRpgAction.Application.Implementations.IdleRpgActionBase command, EnumerationChoserEnum enumChoser)
         {
@@ -15,11 +14,6 @@ namespace IdleRpgActionWinForm.Buttons
             _actionCommand = command;
             SetButtonText(command.ActionCommand);
             SetDropdown(enumChoser);
-        }
-
-        public void UpdateTargetApplication(string targetApplicationName)
-        {
-            _targetApplicationName = targetApplicationName;
         }
 
         private void SetButtonText(ActionCommandEnum actionEnum)
@@ -47,9 +41,9 @@ namespace IdleRpgActionWinForm.Buttons
                 case EnumerationChoserEnum.CratesRarityEnum:
                     enumItems = Enum.GetNames<CratesRarityEnum>();
                     break;
-				case EnumerationChoserEnum.WeaponEnum:
-				enumItems = Enum.GetNames<WeaponEnum>();
-				break;
+                case EnumerationChoserEnum.WeaponEnum:
+                    enumItems = Enum.GetNames<WeaponEnum>();
+                    break;
                 default:
                     break;
             }

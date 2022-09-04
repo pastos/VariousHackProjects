@@ -1,6 +1,8 @@
 ﻿using IdleRpgAction.Application.GameCommands;
 using IdleRpgAction.Domain.Enumerations;
 using IdleRpgActionWinForm.Buttons;
+using IdleRpgActionWinForm.Buttons.BaseClass;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace IdleRpgActionWinForm
@@ -39,182 +41,136 @@ namespace IdleRpgActionWinForm
 
         private void PopulateTabProfile()
         {
-            var action1 = new ActionButton(new ProfileCommand());
-            var action2 = new ActionButton(new Profile2Command());
-            var action3 = new ActionButton(new MyClassCommand());
-            var action4 = new ActionButton(new MoneyCommand());
-            var action5 = new ActionButton(new XpCommand());
-            var action6 = new ActionButton(new EvolveCommand());
+            List<ActionButtonBase> controls = new List<ActionButtonBase>();
+            controls.Add(new ActionButton(new ProfileCommand()));
+            controls.Add(new ActionButton(new Profile2Command()));
+            controls.Add(new ActionButton(new MyClassCommand()));
+            controls.Add(new ActionButton(new MoneyCommand()));
+            controls.Add(new ActionButton(new XpCommand()));
+            controls.Add(new ActionButton(new EvolveCommand()));
 
-            UpdateTargetAppEvent += action1.UpdateTargetApplication;
-            UpdateTargetAppEvent += action2.UpdateTargetApplication;
-            UpdateTargetAppEvent += action3.UpdateTargetApplication;
-            UpdateTargetAppEvent += action4.UpdateTargetApplication;
-            UpdateTargetAppEvent += action5.UpdateTargetApplication;
-            UpdateTargetAppEvent += action6.UpdateTargetApplication;
-
-            flowLayoutProfile.Controls.Add(action1);
-            flowLayoutProfile.Controls.Add(action2);
-            flowLayoutProfile.Controls.Add(action3);
-            flowLayoutProfile.Controls.Add(action4);
-            flowLayoutProfile.Controls.Add(action5);
-            flowLayoutProfile.Controls.Add(action6);
+            foreach (var item in controls)
+            {
+                UpdateTargetAppEvent += item.UpdateTargetApplication;
+                flowLayoutProfile.Controls.Add(item);
+            }
         }
 
         private void PopulateTabAdventure()
         {
-            var statusAction = new ActionButton(new StatusCommand());
-            var action1 = new ActionButtonWithOneChoice(new AdventureCommand());
-            var action2 = new ActionButton(new ActiveAdventureCommand());
-            var action3 = new ActionButtonWithDropdownChoice(new PurchaseBonusCommand(), EnumerationChoserEnum.BonusChoicesEnum);
-            var action4 = new ActionButtonWithDropdownChoice(new ActivateBonusCommand(), EnumerationChoserEnum.BonusChoicesEnum);
-            var action5 = new ActionButton(new BoostersCommand());
+            List<ActionButtonBase> controls = new List<ActionButtonBase>();
+            controls.Add(new ActionButton(new StatusCommand()));
+            controls.Add(new ActionButtonWithOneChoice(new AdventureCommand()));
+            controls.Add(new ActionButton(new ActiveAdventureCommand()));
+            controls.Add(new ActionButtonWithDropdownChoice(new PurchaseBonusCommand(), EnumerationChoserEnum.BonusChoicesEnum));
+            controls.Add(new ActionButtonWithDropdownChoice(new ActivateBonusCommand(), EnumerationChoserEnum.BonusChoicesEnum));
+            controls.Add(new ActionButton(new BoostersCommand()));
 
-            UpdateTargetAppEvent += statusAction.UpdateTargetApplication;
-            UpdateTargetAppEvent += action1.UpdateTargetApplication;
-            UpdateTargetAppEvent += action3.UpdateTargetApplication;
-            UpdateTargetAppEvent += action4.UpdateTargetApplication;
-            UpdateTargetAppEvent += action5.UpdateTargetApplication;
-
-            flowLayoutAdventure.Controls.Add(statusAction);
-            flowLayoutAdventure.Controls.Add(action1);
-            flowLayoutAdventure.Controls.Add(action2);
-            flowLayoutAdventure.Controls.Add(action3);
-            flowLayoutAdventure.Controls.Add(action4);
-            flowLayoutAdventure.Controls.Add(action5);
+            foreach (var item in controls)
+            {
+                UpdateTargetAppEvent += item.UpdateTargetApplication;
+                flowLayoutAdventure.Controls.Add(item);
+            }
         }
 
         private void PopulateTabDailyQuest()
         {
-            var action1 = new ActionButton(new CooldownsCommand());
-            var action2 = new ActionButtonWithReminder(new DailyCommand());
-            var action3 = new ActionButton(new FavorCommand());
-            var action4 = new ActionButtonWithReminder(new PrayCommand());
-            var action5 = new ActionButtonWithReminder(new VoteCommand());
-            var action6 = new ActionButtonWithReminder(new StealCommand());
-            var action7 = new ActionButtonWithTwoChoicesAndText(new ReminderCommand());
+            List<ActionButtonBase> controls = new List<ActionButtonBase>();
+            controls.Add(new ActionButton(new CooldownsCommand()));
+            controls.Add(new ActionButtonWithReminder(new DailyCommand()));
+            controls.Add(new ActionButton(new FavorCommand()));
+            controls.Add(new ActionButtonWithReminder(new PrayCommand()));
+            controls.Add(new ActionButtonWithReminder(new VoteCommand()));
+            controls.Add(new ActionButtonWithReminder(new StealCommand()));
+            controls.Add(new ActionButtonWithTwoChoicesAndText(new ReminderCommand()));
 
-            UpdateTargetAppEvent += action1.UpdateTargetApplication;
-            UpdateTargetAppEvent += action2.UpdateTargetApplication;
-            UpdateTargetAppEvent += action3.UpdateTargetApplication;
-            UpdateTargetAppEvent += action4.UpdateTargetApplication;
-            UpdateTargetAppEvent += action5.UpdateTargetApplication;
-            UpdateTargetAppEvent += action6.UpdateTargetApplication;
-            UpdateTargetAppEvent += action7.UpdateTargetApplication;
-
-            flowLayoutDailyQuest.Controls.Add(action1);
-            flowLayoutDailyQuest.Controls.Add(action2);
-            flowLayoutDailyQuest.Controls.Add(action3);
-            flowLayoutDailyQuest.Controls.Add(action4);
-            flowLayoutDailyQuest.Controls.Add(action5);
-            flowLayoutDailyQuest.Controls.Add(action6);
-            flowLayoutDailyQuest.Controls.Add(action7);
+            foreach (var item in controls)
+            {
+                UpdateTargetAppEvent += item.UpdateTargetApplication;
+                flowLayoutDailyQuest.Controls.Add(item);
+            }
         }
 
         private void PopulateTabBattles()
         {
-            var action1 = new ActionButtonWithOneChoiceAndActor(new BattleCommand());
-            var action2 = new ActionButtonWithOneChoiceAndActor(new RaidBattleCommand());
-            var action3 = new ActionButtonWithOneChoiceAndActor(new HungerGamesCommand());
-            var action4 = new ActionButtonWithOneChoice(new TournamentCommand());
+            List<ActionButtonBase> controls = new List<ActionButtonBase>();
+            controls.Add(new ActionButtonWithOneChoiceAndActor(new BattleCommand()));
+            controls.Add(new ActionButtonWithOneChoiceAndActor(new RaidBattleCommand()));
+            controls.Add(new ActionButtonWithOneChoiceAndActor(new HungerGamesCommand()));
+            controls.Add(new ActionButtonWithOneChoice(new TournamentCommand()));
 
-            UpdateTargetAppEvent += action1.UpdateTargetApplication;
-            UpdateTargetAppEvent += action2.UpdateTargetApplication;
-            UpdateTargetAppEvent += action3.UpdateTargetApplication;
-            UpdateTargetAppEvent += action4.UpdateTargetApplication;
-
-            flowLayoutBattle.Controls.Add(action1);
-            flowLayoutBattle.Controls.Add(action2);
-            flowLayoutBattle.Controls.Add(action3);
-            flowLayoutBattle.Controls.Add(action4);
+            foreach (var item in controls)
+            {
+                UpdateTargetAppEvent += item.UpdateTargetApplication;
+                flowLayoutBattle.Controls.Add(item);
+            }
         }
 
         private void PopulateTabInventoring()
         {
-            var action1 = new ActionButton(new InventoryCommand());
-            var action2 = new ActionButtonWithTwoChoices(new MergeCommand());
-            var action3 = new ActionButtonWithOneChoice(new UpgradeCommand());
-            var action4 = new ActionButton(new CratesCommand());
-            var action5 = new ActionButtonWithDropdownChoiceAndOneChoice(new OpenCratesCommand(), EnumerationChoserEnum.CratesRarityEnum);
+            List<ActionButtonBase> controls = new List<ActionButtonBase>();
+            controls.Add(new ActionButton(new InventoryCommand()));
+            controls.Add(new ActionButtonWithTwoChoices(new MergeCommand()));
+            controls.Add(new ActionButtonWithOneChoice(new UpgradeCommand()));
+            controls.Add(new ActionButton(new CratesCommand()));
+            controls.Add(new ActionButtonWithDropdownChoiceAndOneChoice(new OpenCratesCommand(), EnumerationChoserEnum.CratesRarityEnum));
+            controls.Add(new ActionButton(new LootCommand()));
+            controls.Add(new ActionButton(new ExchangeCommand()));
 
-            UpdateTargetAppEvent += action1.UpdateTargetApplication;
-            UpdateTargetAppEvent += action2.UpdateTargetApplication;
-            UpdateTargetAppEvent += action3.UpdateTargetApplication;
-            UpdateTargetAppEvent += action4.UpdateTargetApplication;
-            UpdateTargetAppEvent += action5.UpdateTargetApplication;
-
-            flowLayoutInventoring.Controls.Add(action1);
-            flowLayoutInventoring.Controls.Add(action2);
-            flowLayoutInventoring.Controls.Add(action3);
-            flowLayoutInventoring.Controls.Add(action4);
-            flowLayoutInventoring.Controls.Add(action5);
+            foreach (var item in controls)
+            {
+                UpdateTargetAppEvent += item.UpdateTargetApplication;
+                flowLayoutInventoring.Controls.Add(item);
+            }
         }
 
         private void PopulateTabShopping()
         {
-            var action1 = new ActionButtonWithOneChoice(new MerchantCommand());
-            var action2 = new ActionButtonWithTwoChoices(new SellCommand());
-            var action3 = new ActionButtonWithOneChoice(new UpgradeCommand());
-            var action4 = new ActionButtonWithDropdownChoiceAndOneChoice(new ShopCommand(), EnumerationChoserEnum.WeaponEnum);
+            List<ActionButtonBase> controls = new List<ActionButtonBase>();
+            controls.Add(new ActionButtonWithOneChoice(new MerchantCommand()));
+            controls.Add(new ActionButtonWithTwoChoices(new SellCommand()));
+            controls.Add(new ActionButtonWithOneChoice(new UpgradeCommand()));
+            controls.Add(new ActionButtonWithDropdownChoiceAndOneChoice(new ShopCommand(), EnumerationChoserEnum.WeaponEnum));
 
-            UpdateTargetAppEvent += action1.UpdateTargetApplication;
-            UpdateTargetAppEvent += action2.UpdateTargetApplication;
-            UpdateTargetAppEvent += action3.UpdateTargetApplication;
-            UpdateTargetAppEvent += action4.UpdateTargetApplication;
-
-            flowLayoutShopping.Controls.Add(action1);
-            flowLayoutShopping.Controls.Add(action2);
-            flowLayoutShopping.Controls.Add(action3);
-            flowLayoutShopping.Controls.Add(action4);
+            foreach (var item in controls)
+            {
+                UpdateTargetAppEvent += item.UpdateTargetApplication;
+                flowLayoutShopping.Controls.Add(item);
+            }
         }
 
         private void PopulateTabGamble()
         {
-            var action1 = new ActionButtonWithOneChoice(new BlackjackCommand());
-            var action2 = new ActionButtonWithOneChoiceAndActor(new CardCommand());
-            var action3 = new ActionButtonWithDropdownChoiceAndOneChoice(new FlipCommand(), EnumerationChoserEnum.CoinSideEnum);
-            var action4 = new ActionButtonWithOneChoiceAndDropdownChoiceAndOneChoice(new RouletteCommand(), EnumerationChoserEnum.RouletteGameEnum);
-            var action5 = new ActionButtonWithOneChoiceAndActor(new BetCommand());
-            var action6 = new ActionButtonWithOneChoiceAndActor(new DoubleOrStealCommand());
-            var action7 = new ActionButton(new RouletteTableCommand());
+            List<ActionButtonBase> controls = new List<ActionButtonBase>();
+            controls.Add(new ActionButtonWithOneChoice(new BlackjackCommand()));
+            controls.Add(new ActionButtonWithOneChoiceAndActor(new CardCommand()));
+            controls.Add(new ActionButtonWithDropdownChoiceAndOneChoice(new FlipCommand(), EnumerationChoserEnum.CoinSideEnum));
+            controls.Add(new ActionButtonWithOneChoiceAndDropdownChoiceAndOneChoice(new RouletteCommand(), EnumerationChoserEnum.RouletteGameEnum));
+            controls.Add(new ActionButtonWithOneChoiceAndActor(new BetCommand()));
+            controls.Add(new ActionButtonWithOneChoiceAndActor(new DoubleOrStealCommand()));
+            controls.Add(new ActionButton(new RouletteTableCommand()));
 
-            UpdateTargetAppEvent += action1.UpdateTargetApplication;
-            UpdateTargetAppEvent += action2.UpdateTargetApplication;
-            UpdateTargetAppEvent += action3.UpdateTargetApplication;
-            UpdateTargetAppEvent += action4.UpdateTargetApplication;
-            UpdateTargetAppEvent += action5.UpdateTargetApplication;
-            UpdateTargetAppEvent += action6.UpdateTargetApplication;
-            UpdateTargetAppEvent += action7.UpdateTargetApplication;
-
-            flowLayoutGamble.Controls.Add(action1);
-            flowLayoutGamble.Controls.Add(action2);
-            flowLayoutGamble.Controls.Add(action3);
-            flowLayoutGamble.Controls.Add(action4);
-            flowLayoutGamble.Controls.Add(action5);
-            flowLayoutGamble.Controls.Add(action6);
-            flowLayoutGamble.Controls.Add(action7);
+            foreach (var item in controls)
+            {
+                UpdateTargetAppEvent += item.UpdateTargetApplication;
+                flowLayoutGamble.Controls.Add(item);
+            }
         }
 
         private void PopulateTabGuild()
         {
-            var action1 = new ActionButton(new GuildCommand());
-            var action2 = new ActionButtonWithOneChoice(new GuildInvestCommand());
-            var action3 = new ActionButtonWithOneChoiceAndActor(new GuildPayCommand());
-            var action4 = new ActionButton(new GuildUpgradeCommand());
-            var action5 = new ActionButton(new GuildAdventureCommand());
+            List<ActionButtonBase> controls = new List<ActionButtonBase>();
+            controls.Add(new ActionButton(new GuildCommand()));
+            controls.Add(new ActionButtonWithOneChoice(new GuildInvestCommand()));
+            controls.Add(new ActionButtonWithOneChoiceAndActor(new GuildPayCommand()));
+            controls.Add(new ActionButton(new GuildUpgradeCommand()));
+            controls.Add(new ActionButton(new GuildAdventureCommand()));
 
-
-            UpdateTargetAppEvent += action1.UpdateTargetApplication;
-            UpdateTargetAppEvent += action2.UpdateTargetApplication;
-            UpdateTargetAppEvent += action3.UpdateTargetApplication;
-            UpdateTargetAppEvent += action4.UpdateTargetApplication;
-            UpdateTargetAppEvent += action5.UpdateTargetApplication;
-
-            flowLayoutGuild.Controls.Add(action1);
-            flowLayoutGuild.Controls.Add(action2);
-            flowLayoutGuild.Controls.Add(action3);
-            flowLayoutGuild.Controls.Add(action4);
-            flowLayoutGuild.Controls.Add(action5);
+            foreach (var item in controls)
+            {
+                UpdateTargetAppEvent += item.UpdateTargetApplication;
+                flowLayoutGuild.Controls.Add(item);
+            }
         }
     }
 }
