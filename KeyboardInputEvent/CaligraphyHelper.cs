@@ -10,10 +10,10 @@ namespace KeyboardInputEvent
             //MarshalClass.KeyDown(VKCodesEnum.VK_LSHIFT);
             //MarshalClass.KeyPress(VKCodesEnum.VK_Key4);
             //MarshalClass.KeyUp(VKCodesEnum.VK_LSHIFT);
-            Thread.Sleep(10);
             foreach (char c in text)
             {
                 CheckCharacterAndType(c);
+                Thread.Sleep(1);
             }
             MarshalClass.KeyPress(VKCodesEnum.VK_RETURN);
         }
@@ -30,6 +30,12 @@ namespace KeyboardInputEvent
             {
                 MarshalClass.KeyDown(VKCodesEnum.VK_LSHIFT);
                 MarshalClass.KeyPress(VKCodesEnum.VK_Key3);
+                MarshalClass.KeyUp(VKCodesEnum.VK_LSHIFT);
+            }
+            else if (c == '$')
+            {
+                MarshalClass.KeyDown(VKCodesEnum.VK_LSHIFT);
+                MarshalClass.KeyPress(VKCodesEnum.VK_Key4);
                 MarshalClass.KeyUp(VKCodesEnum.VK_LSHIFT);
             }
             else if(c=='(')
@@ -51,6 +57,10 @@ namespace KeyboardInputEvent
             else if (c == '\'')
             {
                 MarshalClass.KeyPress(VKCodesEnum.VK_OEM_7);
+            }
+            else if (c == '/')
+            {
+                MarshalClass.KeyPress(VKCodesEnum.VK_OEM_2);
             }
             else
             {
