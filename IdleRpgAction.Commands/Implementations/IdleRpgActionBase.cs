@@ -10,7 +10,8 @@ namespace IdleRpgAction.Application.Implementations
     public abstract class IdleRpgActionBase //: IIdleRpgAction
     {
         protected StringBuilder _executableCommand = new StringBuilder();
-        protected string TriggerCommand { get; } = "/msg @IdleRPG\r$"; //keep the whitespace
+        protected string TriggerCommand { get; } = "@IdleRPG#8939 "; //keep the whitespace
+        //protected string TriggerCommand { get; } = "/msg @IdleRPG\r$"; //keep the whitespace
         protected Dictionary<string, Dictionary<string, string>> _randomTexts;
 
         protected string Name { get; set; }
