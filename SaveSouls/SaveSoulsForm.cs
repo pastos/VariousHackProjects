@@ -2,6 +2,10 @@
 using System.Windows.Forms;
 using System.IO;
 using KeyboardHooksLibrary;
+using System.Drawing;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace SoulSaver
 {
@@ -25,6 +29,7 @@ namespace SoulSaver
             InitializeComponent();
             InitializeKeyboardHooks();
             InitializeForm();
+            ScanForLatestSave();
         }
 
         private void InitializeKeyboardHooks()
@@ -62,8 +67,68 @@ namespace SoulSaver
             }
             else
             {
-                txtLog.AppendText("Can't find the save folder. Please try selecting it manually." + Environment.NewLine);
+                rTxtLog.AppendText("Can't find the save folder. Please try selecting it manually." + Environment.NewLine);
             }
+        }
+
+        private void ScanForLatestSave()
+        {
+            SortedList<DateTime, string> sortedList = new SortedList<DateTime, string>();
+            if (Directory.Exists(QuickSaveFolder1))
+            {
+                string[] files1 = Directory.GetFiles(QuickSaveFolder1, "*.sl2");
+                DateTime latestWriteUtc1 = GetWriteTimeUtcOfSaveFolder(files1);
+                sortedList.Add(latestWriteUtc1, QuickSaveFolder1);
+            }
+
+            if (Directory.Exists(QuickSaveFolder2))
+            {
+                string[] files2 = Directory.GetFiles(QuickSaveFolder2, "*.sl2");
+                DateTime latestWriteUtc2 = GetWriteTimeUtcOfSaveFolder(files2);
+                sortedList.Add(latestWriteUtc2, QuickSaveFolder2);
+            }
+
+            if (Directory.Exists(QuickSaveFolder3))
+            {
+                string[] files3 = Directory.GetFiles(QuickSaveFolder3, "*.sl2");
+                DateTime latestWriteUtc3 = GetWriteTimeUtcOfSaveFolder(files3);
+                sortedList.Add(latestWriteUtc3, QuickSaveFolder3);
+            }
+
+            if (Directory.Exists(QuickSaveFolder4))
+            {
+                string[] files4 = Directory.GetFiles(QuickSaveFolder4, "*.sl2");
+                DateTime latestWriteUtc4 = GetWriteTimeUtcOfSaveFolder(files4);
+                sortedList.Add(latestWriteUtc4, QuickSaveFolder4);
+            }
+
+            string matchFolderName = @"(\w*)\\$";
+            Regex regEx = new Regex(matchFolderName);
+            if (sortedList.Count > 0)
+            {
+                string quickSaveName = regEx.Match(sortedList.Last().Value).Groups[1].Value; //group inside parenthesis of regex
+                quickSaveName = quickSaveName.Replace("Folder", string.Empty);
+                lbl_LatestSave.Text = quickSaveName;
+            }
+            else
+            {
+                lbl_LatestSave.Text = "There is no save point";
+            }
+
+        }
+
+        private DateTime GetWriteTimeUtcOfSaveFolder(string[] files)
+        {
+            DateTime latestWriteUtc = DateTime.MinValue;
+            foreach (var file in files)
+            {
+                DateTime writeUtc = File.GetLastAccessTimeUtc(file);
+                if (latestWriteUtc < writeUtc)
+                {
+                    latestWriteUtc = writeUtc;
+                }
+            }
+            return latestWriteUtc;
         }
 
         private void OnKeyPressed(object sender, GlobalKeyboardHookEventArgs e)
@@ -82,43 +147,54 @@ namespace SoulSaver
             //}
             //else
 
-            if (e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyUp)
+            if (e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown)
             {
                 string keyPressed = GlobalKeyboardHook.KeyPressed(e.KeyboardData.VirtualCode);
                 if (!string.IsNullOrEmpty(keyPressed))
                 {
-                    e.Handled = true;
                     if (keyPressed == "F1")
                     {
+                        e.Handled = true;
                         QuickSave(QuickSaveFolder1, 1);
                     }
                     else if (keyPressed == "F2")
                     {
+                        e.Handled = true;
                         QuickSave(QuickSaveFolder2, 2);
                     }
                     else if (keyPressed == "F3")
                     {
+                        e.Handled = true;
                         QuickSave(QuickSaveFolder3, 3);
                     }
                     else if (keyPressed == "F4")
                     {
+                        e.Handled = true;
                         QuickSave(QuickSaveFolder4, 4);
                     }
                     else if (keyPressed == "F5")
                     {
+                        e.Handled = true;
                         QuickLoad(QuickSaveFolder1, 1);
                     }
                     else if ((keyPressed == "F6"))
                     {
+                        e.Handled = true;
                         QuickLoad(QuickSaveFolder2, 2);
                     }
                     else if (keyPressed == "F7")
                     {
+                        e.Handled = true;
                         QuickLoad(QuickSaveFolder3, 3);
                     }
                     else if (keyPressed == "F8")
                     {
+                        e.Handled = true;
                         QuickLoad(QuickSaveFolder4, 4);
+                    }
+                    else
+                    {
+                        e.Handled = false;
                     }
 
                 }
@@ -139,9 +215,13 @@ namespace SoulSaver
                 }
 
                 File.Copy(soulFileFullPath, destinationFileFullPath, true);
-                string body = string.Format("Game Saved (QuickSave {0})", quickSaveNumber);
-                txtLog.AppendText(body + Environment.NewLine);
-                ShowBaloonNotification(body);
+                string body = string.Format("Game Saved (QuickSave {0}) - {1}", quickSaveNumber, DateTime.Now.ToString());
+                rTxtLog.SelectionColor = PickRandomColor();
+                rTxtLog.SelectionBackColor = InverseColor(rTxtLog.SelectionColor);
+                rTxtLog.AppendText(body + Environment.NewLine);
+                rTxtLog.ScrollToCaret();
+                lbl_LatestSave.Text = string.Format("QuickSave {0}", quickSaveNumber);
+                //ShowBaloonNotification(body);
             }
             catch
             {
@@ -160,15 +240,36 @@ namespace SoulSaver
                 try
                 {
                     File.Copy(loadDestinationFileFullPath, soulFileFullPath, true);
-                    string body = string.Format("Game Loaded (QuickLoad {0})", quickLoadNumber);
-                    txtLog.AppendText(body + Environment.NewLine);
-                    ShowBaloonNotification(body);
+                    string body = string.Format("Game Loaded (QuickLoad {0}) - {1}", quickLoadNumber, DateTime.Now.ToString());
+                    rTxtLog.SelectionColor = PickRandomColor();
+                    rTxtLog.SelectionBackColor = InverseColor(rTxtLog.SelectionColor);
+                    rTxtLog.AppendText(body + Environment.NewLine);
+                    rTxtLog.ScrollToCaret();
+                    //ShowBaloonNotification(body);
                 }
                 catch (Exception ex)
                 {
-                    txtLog.AppendText(ex.Message + Environment.NewLine);
+                    rTxtLog.SelectionColor = System.Drawing.Color.Red;
+                    rTxtLog.AppendText(ex.Message + Environment.NewLine);
                 }
             }
+        }
+
+        private Color PickRandomColor()
+        {
+            Random rnd = new Random(System.Environment.TickCount);
+            int r = rnd.Next(0, 255);
+            int g = rnd.Next(0, 255);
+            int b = rnd.Next(0, 255);
+            return Color.FromArgb(r, g, b);
+        }
+
+        private Color InverseColor(Color color)
+        {
+            int inverseR = 255 - color.R;
+            int inverseG = 255 - color.G;
+            int inverseB = 255 - color.B;
+            return Color.FromArgb(inverseR, inverseG, inverseB);
         }
 
         private void BackupOriginal()
@@ -262,7 +363,7 @@ namespace SoulSaver
             _notifyICon.BalloonTipTitle = _selectedComboItem.Text;
             _notifyICon.BalloonTipText = bodyText;
             _notifyICon.Visible = true;
-            //_notifyICon.ShowBalloonTip(5000);
+            _notifyICon.ShowBalloonTip(5000);
         }
 
         private void NotifyICon__Click(object sender, EventArgs e)

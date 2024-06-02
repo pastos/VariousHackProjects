@@ -19,7 +19,15 @@ namespace InputActivityMonitor
         [DllImport("user32.dll")]
         private static extern bool GetWindowRect(IntPtr hWnd, out Rectangle rect);
 
+        /// <summary>
+        /// True if currently used window is at front
+        /// </summary>
         public static bool IsWindowAtFront { get; private set; }
+        
+        /// <summary>
+        /// Brings the window with name 'windowName' to the front
+        /// </summary>
+        /// <param name="windowName"></param>
         public static void BringWindowToFront(string windowName)
         {
             IsWindowAtFront = false;
@@ -33,6 +41,11 @@ namespace InputActivityMonitor
             }
         }
 
+        /// <summary>
+        /// Finds the name of the window that contains 'windowName' in its name
+        /// </summary>
+        /// <param name="windowName"></param>
+        /// <returns></returns>
         public static IntPtr FindName(string windowName)
         {
             IntPtr hWnd = IntPtr.Zero;
@@ -47,6 +60,11 @@ namespace InputActivityMonitor
             return hWnd;
         }
 
+        /// <summary>
+        /// Gets the rectangular boundaries of the window based on its IntPtr
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
         public static Rectangle GetBoundsOfWindow(IntPtr hWnd)
         {
             Rectangle rect = new Rectangle();
@@ -58,6 +76,11 @@ namespace InputActivityMonitor
             return rect;
         }
 
+        /// <summary>
+        /// Gets the rectangular boundaries of the window based on its name 'windowName'
+        /// </summary>
+        /// <param name="windowName"></param>
+        /// <returns></returns>
         public static Rectangle GetBoundsOfWindow(string windowName)
         {
             IntPtr hWnd = FindWindow(null, windowName);

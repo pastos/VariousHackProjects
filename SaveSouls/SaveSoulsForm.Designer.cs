@@ -38,7 +38,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.txtLog = new System.Windows.Forms.TextBox();
+            this.rTxtLog = new System.Windows.Forms.RichTextBox();
+            this.lbl_L = new System.Windows.Forms.Label();
+            this.lbl_LatestSave = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,15 +120,38 @@
             // 
             this.openFileDialog.Filter = "Soul files (*.sl2)|*.sl2";
             // 
-            // txtLog
+            // rTxtLog
             // 
-            this.txtLog.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.txtLog.Location = new System.Drawing.Point(1, 200);
-            this.txtLog.Multiline = true;
-            this.txtLog.Name = "txtLog";
-            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(421, 109);
-            this.txtLog.TabIndex = 9;
+            this.rTxtLog.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.rTxtLog.Location = new System.Drawing.Point(1, 200);
+            this.rTxtLog.Name = "rTxtLog";
+            this.rTxtLog.Size = new System.Drawing.Size(421, 109);
+            this.rTxtLog.TabIndex = 10;
+            this.rTxtLog.Text = "";
+            // 
+            // lbl_L
+            // 
+            this.lbl_L.AutoSize = true;
+            this.lbl_L.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_L.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_L.ForeColor = System.Drawing.Color.White;
+            this.lbl_L.Location = new System.Drawing.Point(9, 182);
+            this.lbl_L.Name = "lbl_L";
+            this.lbl_L.Size = new System.Drawing.Size(85, 15);
+            this.lbl_L.TabIndex = 11;
+            this.lbl_L.Text = "Latest Save:";
+            // 
+            // lbl_LatestSave
+            // 
+            this.lbl_LatestSave.AutoSize = true;
+            this.lbl_LatestSave.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_LatestSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LatestSave.ForeColor = System.Drawing.Color.White;
+            this.lbl_LatestSave.Location = new System.Drawing.Point(100, 182);
+            this.lbl_LatestSave.Name = "lbl_LatestSave";
+            this.lbl_LatestSave.Size = new System.Drawing.Size(148, 15);
+            this.lbl_LatestSave.TabIndex = 12;
+            this.lbl_LatestSave.Text = "No Saved game found";
             // 
             // SaveSoulsForm
             // 
@@ -135,7 +160,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(424, 311);
-            this.Controls.Add(this.txtLog);
+            this.Controls.Add(this.lbl_LatestSave);
+            this.Controls.Add(this.lbl_L);
+            this.Controls.Add(this.rTxtLog);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSelectFolder);
@@ -167,7 +194,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.RichTextBox rTxtLog;
+        private System.Windows.Forms.Label lbl_L;
+        private System.Windows.Forms.Label lbl_LatestSave;
     }
 }
 
