@@ -135,11 +135,11 @@
             this.lbl_L.BackColor = System.Drawing.Color.Transparent;
             this.lbl_L.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_L.ForeColor = System.Drawing.Color.White;
-            this.lbl_L.Location = new System.Drawing.Point(9, 182);
+            this.lbl_L.Location = new System.Drawing.Point(5, 182);
             this.lbl_L.Name = "lbl_L";
-            this.lbl_L.Size = new System.Drawing.Size(85, 15);
+            this.lbl_L.Size = new System.Drawing.Size(125, 15);
             this.lbl_L.TabIndex = 11;
-            this.lbl_L.Text = "Latest Save:";
+            this.lbl_L.Text = "Latest Save Order:";
             // 
             // lbl_LatestSave
             // 
@@ -147,7 +147,7 @@
             this.lbl_LatestSave.BackColor = System.Drawing.Color.Transparent;
             this.lbl_LatestSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_LatestSave.ForeColor = System.Drawing.Color.White;
-            this.lbl_LatestSave.Location = new System.Drawing.Point(100, 182);
+            this.lbl_LatestSave.Location = new System.Drawing.Point(133, 182);
             this.lbl_LatestSave.Name = "lbl_LatestSave";
             this.lbl_LatestSave.Size = new System.Drawing.Size(148, 15);
             this.lbl_LatestSave.TabIndex = 12;

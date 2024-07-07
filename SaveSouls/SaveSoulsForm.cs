@@ -24,11 +24,14 @@ namespace SoulSaver
         private string QuickSaveFolder3 = Environment.CurrentDirectory + "\\QuickSaveFolder3\\";
         private string QuickSaveFolder4 = Environment.CurrentDirectory + "\\QuickSaveFolder4\\";
 
+        private QuickSaveLoad[] _quickSaveLoadArray;
+
         public SaveSoulsForm()
         {
             InitializeComponent();
             InitializeKeyboardHooks();
             InitializeForm();
+            InitializeQuickSaveLoadArray();
             ScanForLatestSave();
         }
 
@@ -42,6 +45,37 @@ namespace SoulSaver
         {
             SetupNotificationIcon();
             PopulateCombobox();
+        }
+
+        private void InitializeQuickSaveLoadArray()
+        {
+            _quickSaveLoadArray = new QuickSaveLoad[]
+            {
+                new QuickSaveLoad()
+                {
+                    Folder = Environment.CurrentDirectory + "\\QuickSaveFolder1\\",
+                    SaveKey = "F1",
+                    LoadKey = "F5"
+                },
+                new QuickSaveLoad()
+                {
+                    Folder = Environment.CurrentDirectory + "\\QuickSaveFolder2\\",
+                    SaveKey = "F2",
+                    LoadKey = "F6"
+                },
+                new QuickSaveLoad()
+                {
+                    Folder = Environment.CurrentDirectory + "\\QuickSaveFolder3\\",
+                    SaveKey = "F3",
+                    LoadKey = "F7"
+                },
+                new QuickSaveLoad()
+                {
+                    Folder = Environment.CurrentDirectory + "\\QuickSaveFolder4\\",
+                    SaveKey = "F4",
+                    LoadKey = "F8"
+                }
+            };
         }
 
         private void PopulateCombobox()
@@ -74,41 +108,42 @@ namespace SoulSaver
         private void ScanForLatestSave()
         {
             SortedList<DateTime, string> sortedList = new SortedList<DateTime, string>();
-            if (Directory.Exists(QuickSaveFolder1))
-            {
-                string[] files1 = Directory.GetFiles(QuickSaveFolder1, "*.sl2");
-                DateTime latestWriteUtc1 = GetWriteTimeUtcOfSaveFolder(files1);
-                sortedList.Add(latestWriteUtc1, QuickSaveFolder1);
-            }
 
-            if (Directory.Exists(QuickSaveFolder2))
-            {
-                string[] files2 = Directory.GetFiles(QuickSaveFolder2, "*.sl2");
-                DateTime latestWriteUtc2 = GetWriteTimeUtcOfSaveFolder(files2);
-                sortedList.Add(latestWriteUtc2, QuickSaveFolder2);
-            }
-
-            if (Directory.Exists(QuickSaveFolder3))
-            {
-                string[] files3 = Directory.GetFiles(QuickSaveFolder3, "*.sl2");
-                DateTime latestWriteUtc3 = GetWriteTimeUtcOfSaveFolder(files3);
-                sortedList.Add(latestWriteUtc3, QuickSaveFolder3);
-            }
-
-            if (Directory.Exists(QuickSaveFolder4))
-            {
-                string[] files4 = Directory.GetFiles(QuickSaveFolder4, "*.sl2");
-                DateTime latestWriteUtc4 = GetWriteTimeUtcOfSaveFolder(files4);
-                sortedList.Add(latestWriteUtc4, QuickSaveFolder4);
-            }
-
+            string quickSaveFolder;
             string matchFolderName = @"(\w*)\\$";
             Regex regEx = new Regex(matchFolderName);
+
+            for (int i = 0; i < _quickSaveLoadArray.Length; i++)
+            {
+                quickSaveFolder = _quickSaveLoadArray[i].Folder;
+                if (Directory.Exists(quickSaveFolder))
+                {
+                    string[] files1 = Directory.GetFiles(quickSaveFolder, "*.sl2");
+                    DateTime latestWriteUtc1 = GetWriteTimeUtcOfSaveFolder(files1);
+
+                    quickSaveFolder = regEx.Match(quickSaveFolder).Groups[1].Value;
+                    quickSaveFolder = quickSaveFolder.Replace("QuickSaveFolder", string.Empty);
+                    quickSaveFolder += " (F" + (i + 5).ToString() + ")";
+                    sortedList.Add(latestWriteUtc1, quickSaveFolder);
+                }
+            }
+
             if (sortedList.Count > 0)
             {
-                string quickSaveName = regEx.Match(sortedList.Last().Value).Groups[1].Value; //group inside parenthesis of regex
-                quickSaveName = quickSaveName.Replace("Folder", string.Empty);
-                lbl_LatestSave.Text = quickSaveName;
+                string quickSaveName = string.Empty;
+                string quickSavesInOrder = string.Empty;
+                string arrow = " -> ";
+
+                for (int i = sortedList.Count - 1; i > -1; --i)
+                {
+                    quickSaveName = sortedList.ElementAt(i).Value;
+                    quickSavesInOrder += quickSaveName + arrow;
+                }
+
+                int startIndex = (quickSavesInOrder.Length) - arrow.Length;
+                quickSavesInOrder = quickSavesInOrder.Remove(startIndex, arrow.Length); //removes last arrow
+
+                lbl_LatestSave.Text = quickSavesInOrder;
             }
             else
             {
@@ -152,51 +187,20 @@ namespace SoulSaver
                 string keyPressed = GlobalKeyboardHook.KeyPressed(e.KeyboardData.VirtualCode);
                 if (!string.IsNullOrEmpty(keyPressed))
                 {
-                    if (keyPressed == "F1")
+                    e.Handled = false;
+                    for (int i = 0; i < _quickSaveLoadArray.Length; i++)
                     {
-                        e.Handled = true;
-                        QuickSave(QuickSaveFolder1, 1);
+                        if (keyPressed == _quickSaveLoadArray[i].SaveKey)
+                        {
+                            e.Handled = true;
+                            QuickSave(_quickSaveLoadArray[i].Folder, i + 1);
+                        }
+                        else if (keyPressed == _quickSaveLoadArray[i].LoadKey)
+                        {
+                            e.Handled = true;
+                            QuickLoad(_quickSaveLoadArray[i].Folder, i + 1);
+                        }
                     }
-                    else if (keyPressed == "F2")
-                    {
-                        e.Handled = true;
-                        QuickSave(QuickSaveFolder2, 2);
-                    }
-                    else if (keyPressed == "F3")
-                    {
-                        e.Handled = true;
-                        QuickSave(QuickSaveFolder3, 3);
-                    }
-                    else if (keyPressed == "F4")
-                    {
-                        e.Handled = true;
-                        QuickSave(QuickSaveFolder4, 4);
-                    }
-                    else if (keyPressed == "F5")
-                    {
-                        e.Handled = true;
-                        QuickLoad(QuickSaveFolder1, 1);
-                    }
-                    else if ((keyPressed == "F6"))
-                    {
-                        e.Handled = true;
-                        QuickLoad(QuickSaveFolder2, 2);
-                    }
-                    else if (keyPressed == "F7")
-                    {
-                        e.Handled = true;
-                        QuickLoad(QuickSaveFolder3, 3);
-                    }
-                    else if (keyPressed == "F8")
-                    {
-                        e.Handled = true;
-                        QuickLoad(QuickSaveFolder4, 4);
-                    }
-                    else
-                    {
-                        e.Handled = false;
-                    }
-
                 }
             }
         }
@@ -220,7 +224,8 @@ namespace SoulSaver
                 rTxtLog.SelectionBackColor = InverseColor(rTxtLog.SelectionColor);
                 rTxtLog.AppendText(body + Environment.NewLine);
                 rTxtLog.ScrollToCaret();
-                lbl_LatestSave.Text = string.Format("QuickSave {0}", quickSaveNumber);
+                ScanForLatestSave();
+                //lbl_LatestSave.Text = string.Format("QuickSave {0}", quickSaveNumber);
                 //ShowBaloonNotification(body);
             }
             catch
